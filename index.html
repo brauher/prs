@@ -80,6 +80,7 @@
         p { font-size: 1.3rem; font-weight: 300; opacity: 0.9; line-height: 1.6; }
 
         .img-container {
+            position: relative;
             overflow: hidden;
             border-radius: 20px;
             box-shadow: 0 50px 100px rgba(0,0,0,0.8);
@@ -107,6 +108,115 @@
 
         .swiper-pagination-progressbar { background: rgba(255,255,255,0.1) !important; height: 4px !important; }
         .swiper-pagination-progressbar-fill { background: var(--accent-color) !important; }
+
+        .animal-card {
+            position: relative;
+        }
+
+        .animal-overlay {
+            position: absolute;
+            inset: 0;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            cursor: pointer;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            border-radius: 20px;
+        }
+
+        .animal-overlay span {
+            font-size: 6rem;
+            font-weight: 800;
+            color: white;
+            animation: pulseQuestion 1.5s infinite;
+        }
+
+        @keyframes pulseQuestion {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .animal-name {
+            position: relative;
+            display: inline-block;
+        }
+
+        .animal-name.glitch {
+            animation: glitchText 0.15s infinite;
+            color: white;
+        }
+
+        .animal-name.glitch::before,
+        .animal-name.glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .animal-name.glitch::before {
+            color: #ff004c;
+            transform: translate(-2px, 0);
+            clip-path: inset(0 0 50% 0);
+        }
+
+        .animal-name.glitch::after {
+            color: #00ffff;
+            transform: translate(2px, 0);
+            clip-path: inset(50% 0 0 0);
+        }
+
+        @keyframes glitchText {
+            0% {
+                transform: translate(0);
+                filter: blur(0);
+            }
+            20% {
+                transform: translate(-2px, 1px);
+            }
+            40% {
+                transform: translate(2px, -1px);
+            }
+            60% {
+                transform: translate(-1px, -2px);
+            }
+            80% {
+                transform: translate(2px, 2px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        .animal-card.revealed .animal-overlay {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .animal-card.revealed .animal-name {
+            animation: none;
+        }
+
+        .animal-card.revealed .animal-name::before,
+        .animal-card.revealed .animal-name::after {
+            display: none;
+        }
+
+        .animal-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            transition: all .5s ease;
+        }
+
+        .animal-card.revealed .animal-name {
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
@@ -381,20 +491,35 @@
                     <h2 data-swiper-parallax="-400">Animals in Australia</h2>
                     <div class="slide-grid-2">
                         <div data-swiper-parallax="-200">
-                            <div class="img-container" style="height: 350px;">
-                                <img src="19.png" alt="png">
+                            <div class="animal-card">
+
+                                <div class="img-container" style="height: 350px;">
+                                    <img src="19.png" alt="png">
+
+                                <div class="animal-overlay">
+                                    <span>?</span>
+                                </div>
+
                             </div>
-                            <p style="font-weight: bold;"><b>Kangaroo</b></p>
-                            <p>Kangaroos are macropods known for powerful legs and long-distance hopping. They occur in many habitats, from arid deserts to tropical rainforests, depending on the species.</p>
-                            <p>Habitat: Open grasslands, woodlands, arid inland regions.</p>
+
+                                <p class="animal-name" data-real-name="Kangaroo"></p>
+                            </div>
+                            <p>This animal is a large marsupial that moves by hopping on powerful hind legs. It carries its young in a pouch and can travel long distances across open land.</p>
+                            <p>Habitat: Grasslands, open forests, and bushland across most of Australia.</p>
                         </div>
                         <div data-swiper-parallax="-100">
-                            <div class="img-container" style="height: 350px;">
-                                <img src="20.png" alt="png">
+                            <div class="animal-card">
+                                <div class="img-container" style="height: 350px;">
+                                    <img src="20.png" alt="png">
+
+                                <div class="animal-overlay">
+                                    <span>?</span>
+                                </div>
                             </div>
-                            <p style="font-weight: bold;"><b>Koala</b></p>
-                            <p>Koalas are tree-dwelling animals famous for their fluffy ears and eucalyptus diet. They are found mainly in eastern and southern forests, especially areas rich in eucalyptus trees.</p>
-                            <p>Habitat: Wet and dry forests, coastal woodlands.</p>
+                                <p class="animal-name" data-real-name="Koala"></p>
+                            </div>
+                            <p>This animal sleeps up to 20 hours a day and spends nearly all its time in eucalyptus trees. It has fluffy ears, a round nose, and eats only eucalyptus leaves.</p>
+                            <p>Habitat: Eucalyptus forests in eastern and southeastern Australia.</p>
                         </div>
                     </div>
                 </div>
@@ -408,20 +533,32 @@
                     <h2 data-swiper-parallax="-400">Animals in Australia</h2>
                     <div class="slide-grid-2">
                         <div data-swiper-parallax="-200">
-                            <div class="img-container" style="height: 350px;">
-                                <img src="21.png" alt="png">
+                            <div class="animal-card">
+                                <div class="img-container" style="height: 350px;">
+                                    <img src="21.png" alt="png">
+
+                                <div class="animal-overlay">
+                                    <span>?</span>
+                                </div>
                             </div>
-                            <p style="font-weight: bold;"><b>Emu</b></p>
-                            <p>The emu is a large, flightless bird and one of Australia’s national symbols. It lives in grasslands, savannas, and open woodlands across most of the continent.</p>
-                            <p>Habitat: Open plains, woodlands, semi-arid regions.</p>
+                                <p class="animal-name" data-real-name="Emu"></p>
+                            </div>
+                            <p>This animal is a large, flightless bird with long legs and a long neck. It can run very fast and is the second-largest bird in the world.</p>
+                            <p>Habitat: Open plains, savannas, and woodlands across mainland Australia.</p>
                         </div>
                         <div data-swiper-parallax="-100">
-                            <div class="img-container" style="height: 350px;">
-                                <img src="22.png" alt="png">
+                            <div class="animal-card">
+                                <div class="img-container" style="height: 350px;">
+                                    <img src="22.png" alt="png">
+
+                                <div class="animal-overlay">
+                                    <span>?</span>
+                                </div>
                             </div>
-                            <p style="font-weight: bold;"><b>Quokka</b></p>
-                            <p>A small, friendly-looking macropod found mainly on islands off Western Australia.</p>
-                            <p>Habitat: Coastal scrub, forests, island woodlands.</p>
+                                <p class="animal-name" data-real-name="Quokka"></p>
+                            </div>
+                            <p>This animal is a small, smiling marsupial known for being friendly and photogenic. It hops like a tiny kangaroo and feeds on leafy vegetation.</p>
+                            <p>Habitat: Rottnest Island and small parts of southwestern Australia.</p>
                         </div>
                     </div>
                 </div>
@@ -467,5 +604,22 @@
             keyboard: { enabled: true },
         });
     </script>
+    <script>
+        document.querySelectorAll('.animal-overlay').forEach(overlay => {
+
+            overlay.addEventListener('click', () => {
+
+                const card = overlay.closest('.animal-card');
+
+                card.classList.add('revealed');
+
+                const name = card.querySelector('.animal-name');
+
+                name.textContent = name.dataset.realName;
+
+            });
+
+        });
+</script>
 </body>
 </html>
