@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Koalicja Obywatelska</title>
+<style>
+:root{--paper:#f5f4ef;--ink:#171717;--muted:#66665f;--lime:#d8ff3e;--blue:#3157f6;--line:#d9d8d0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}a{color:inherit}
+.topbar{position:fixed;z-index:10;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:18px 4vw;background:rgba(245,244,239,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.brand{font-size:15px;font-weight:900;letter-spacing:.18em}.topbar span{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.slide{position:relative;min-height:100svh;padding:100px 7vw 54px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line)}.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--muted);margin:0 0 24px}.slide h2{font-size:clamp(38px,6.5vw,92px);line-height:.94;letter-spacing:-.065em;max-width:950px;margin:0 0 42px;font-weight:850}.slide h2 em{font-style:normal;color:var(--blue)}.num{position:absolute;right:4vw;top:110px;font-size:11px;letter-spacing:.16em;color:var(--muted)}
+/* cover */
+.cover{min-height:100svh;padding:0;color:#fff;justify-content:flex-end;background:#20251f}.cover-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62);animation:coverIn 1.2s ease both}.cover:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);pointer-events:none}.cover-content{position:relative;z-index:1;padding:12vh 8vw 7vh;display:flex;flex-direction:column;align-items:center;text-align:center}.cover-kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:22px}.cover h1{font-size:clamp(54px,12vw,164px);line-height:.82;letter-spacing:-.085em;margin:0 0 32px;font-weight:900;animation:rise .9s .15s both}.cover h1 span{color:var(--lime)}.cover-sub{max-width:530px;font-size:clamp(14px,1.5vw,19px);line-height:1.5;color:#eee;margin:0 0 54px}.logo-mark{width:48px;height:48px;border:2px solid var(--lime);display:grid;place-items:center;font-size:22px;font-weight:900;color:var(--lime);transform:rotate(45deg);margin-bottom:22px}.logo-mark b{transform:rotate(-45deg)}.cover-author{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#ddd}.scroll-hint{position:absolute;bottom:25px;right:4vw;z-index:2;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#fff;writing-mode:vertical-rl}
+/* image layouts */
+.two-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.three-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.photo-card{min-width:0}.photo-wrap{overflow:hidden;aspect-ratio:4/3;position:relative}.photo-wrap img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s}.photo-card:hover img{transform:scale(1.045);filter:saturate(1.1)}.photo-card h3{font-size:clamp(20px,2.4vw,32px);letter-spacing:-.04em;margin:18px 0 8px}.photo-card p{font-size:14px;line-height:1.6;color:var(--muted);max-width:420px;margin:0}.tag{display:inline-block;background:var(--lime);padding:7px 10px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:15px}.single-layout{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:6vw}.single-layout .photo-wrap{aspect-ratio:5/4}.single-layout h2{margin-bottom:22px}.single-layout .description{font-size:27px;line-height:1.7;color:var(--muted);max-width:840px}.single-layout .index{font-size:12px;letter-spacing:.15em;color:var(--blue);font-weight:800;margin-top:32px}
+.three-grid .photo-wrap{aspect-ratio:3/4}.three-grid .photo-card h3{font-size:clamp(18px,2vw,27px)}.three-grid .photo-card p{font-size:13px}
+.note{margin-top:36px;border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.description1{font-size:26px;line-height:1.7;color:var(--muted);max-width:840px}
+.description2{font-size:23px;line-height:1.7;color:var(--muted);max-width:840px}
+.description3{font-size:20px;line-height:1.7;color:var(--muted);max-width:840px}
+.slide h1 em{font-style:normal;color:#d8ff3e}.num{position:absolute;right:4vw;top:110px;font-size:11px;letter-spacing:.16em;color:var(--muted)}
+/* ending */
+.ending{background:#101010;color:#f7f7f2;text-align:center;align-items:center}.ending .eyebrow{color:var(--lime)}.ending h2{font-size:clamp(60px,13vw,180px);letter-spacing:-.09em;line-height:.8;margin:20px 0 38px;max-width:1100px}.ending h2 span{color:var(--lime)}.ending .end-caption{color:#b7b7b0;line-height:1.7;font-size:14px}.authors{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:60px}.author{min-width:130px}.author strong{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}.author small{color:#92928b;font-size:11px}.end-mark{width:34px;height:34px;border:1px solid var(--lime);color:var(--lime);display:grid;place-items:center;font-weight:900;margin-bottom:32px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}.delay-1{transition-delay:.12s}.delay-2{transition-delay:.24s}
+.progress{position:fixed;z-index:12;bottom:0;left:0;height:3px;background:var(--blue);width:0;transition:width .1s linear}.nav-dots{position:fixed;z-index:11;left:22px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}.nav-dots a{width:7px;height:7px;border-radius:50%;background:#bdbdb5;transition:transform .2s,background .2s}.nav-dots a.active{background:var(--blue);transform:scale(1.5,2)}
+@keyframes rise{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}@keyframes coverIn{from{transform:scale(1.06);opacity:.5}to{transform:scale(1);opacity:1}}
+@media(max-width:700px){.topbar{padding:15px 5vw}.topbar span{font-size:9px}.slide{padding:100px 7vw 55px}.nav-dots{left:9px}.num{top:85px}.two-grid{grid-template-columns:1fr;gap:30px}.three-grid{grid-template-columns:1fr;gap:30px}.three-grid .photo-wrap{aspect-ratio:5/3}.single-layout{grid-template-columns:1fr;gap:28px}.single-layout .photo-wrap{order:-1}.cover-content{padding:12vh 8vw 9vh}.cover-sub{margin-bottom:38px}.note{font-size:9px}.authors{gap:24px;margin-top:40px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand">Koalicja Obywatelska</div><span>DK KM WR EW RB</span></header>
+<nav class="nav-dots" aria-label="Nawigacja po slajdach">
+<a href="#0" class="active" aria-label="Slajd 1"></a><a href="#1" aria-label="Slajd 2"></a><a href="#2" aria-label="Slajd 3"></a><a href="#3" aria-label="Slajd 4"></a><a href="#4" aria-label="Slajd 5"></a><a href="#5" aria-label="Slajd 6"></a><a href="#6" aria-label="Slajd 7"></a><a href="#7" aria-label="Slajd 8"></a><a href="#8" aria-label="Slajd 9"></a><a href="#9" aria-label="Slajd 10"></a><a href="#10" aria-label="Slajd 11"></a><a href="#11" aria-label="Slajd 12"></a><a href="#12" aria-label="Slajd 13"></a><a href="#13" aria-label="Slajd 14"></a>
+</nav>
+<div class="progress" id="progress"></div>
+<main>
+
+<section class="slide" id="2">
+<span class="num">03 / 05</span><div class="single-layout">
+<div class="reveal"><h2>Czym<br>jest <em>Koalicja Obywatelska</em></h2><p class="description">Platforma Obywatelska (PO) to partia polityczna plasująca się w politycznym centrum, łącząca elementy socjalliberalizmu, liberalnego konserwatyzmu, chrześcijańskiej demokracji oraz silnego proeuropeizmu. Choć ugrupowanie powstało w 2001 roku jako formacja wyraźnie liberalno-gospodarcza i konserwatywna światopoglądowo, na przestrzeni lat przesunęło swoje akcenty w stronę postulatów centrowo-lewicowych i socjalnych.
+Platforma Obywatelska (PO) to polska partia polityczna o charakterze centrowym, która w październiku 2025 roku formalnie przekształciła się w partię Koalicja Obywatelska.</p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="logo.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide" id="3">
+<span class="num">04 / 06</span><div class="single-layout">
+<div class="reveal"><h2>Najważniejsze o<br><em>PO</em></h2><p class="description">Platforma Obywatelska powstała 24 stycznia 2001 roku jako stowarzyszenie polityczne. Jej celem było stworzenie ugrupowania, które połączy zwolenników wolnego rynku, demokracji i integracji europejskiej. 5 marca 2002 roku została oficjalnie zarejestrowana jako partia polityczna, co umożliwiło jej formalne działanie w polskim systemie partyjnym.</p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="logo.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide" id="4">
+<span class="num">05 / 06</span><div class="single-layout">
+<div class="reveal"><h2>Przewodniczący<br></h2><p class="description">Najważniejszą postacią Platformy Obywatelskiej jest <em style="font-style: normal;color:#3157f6"><b>Donald Tusk</b></em>, który odgrywa kluczową rolę w jej rozwoju. Był jednym z założycieli partii, a następnie jej wieloletnim przewodniczącym. Pełnił funkcję premiera Polski w latach 2007–2014, a w grudniu 2023 roku ponownie objął urząd premiera. Jego działalność miała duży wpływ na pozycję PO w polskiej polityce.</p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="tusk.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide" id="5">
+<span class="num">06 / 06</span><div class="single-layout">
+<div class="reveal"><h2>Profil polityczny<br></h2><p class="description">Platforma Obywatelska przez wiele lat była określana jako partia centroprawicowa, o profilu liberalno-konserwatywnym. Opowiadała się za gospodarką rynkową, przedsiębiorczością i integracją Polski z Unią Europejską. Z czasem jej program ewoluował w stronę centrum i socjalliberalizmu. Ugrupowanie podkreśla znaczenie praw obywatelskich, demokracji, praworządności oraz współpracy z państwami europejskimi. PO jest obecnie główną partią współtworzącą Koalicję Obywatelską.</p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="logo.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide" id="6">
+<span class="num">07 / 06</span><div class="single-layout">
+<div class="reveal"><h2>Edukacja i ochrona zdrowia<br></h2><h1>Edukacja<br></h1><p class="description2">• <b>Wyższe wynagrodzenia nauczycieli</b> – poprawa warunków pracy nauczycieli i zachęcanie nowych osób do pracy w szkołach.<br>• <b>*Nowoczesne nauczanie*</b> – zmniejszenie zakresu materiału, rozwijanie umiejętności praktycznych oraz lepsze przygotowanie uczniów do przyszłej pracy. <br>• <b>*Mniej prac domowych*</b> – ograniczenie obowiązkowych prac domowych w szkołach podstawowych i przeznaczenie większej ilości czasu na odpoczynek oraz zainteresowania.<br>• <b>*Wsparcie psychologiczne*</b> – zapewnienie uczniom łatwiejszego dostępu do psychologów i pomocy w problemach szkolnych oraz osobistych.<br></p><h1>*Ochrona zdrowia*<br></h1><p class = "description2">• <b>*Krótsze kolejki do lekarzy*</b> – poprawa dostępności wizyt u specjalistów i zwiększenie dostępności leczenia finansowanego przez NFZ.<br>• <b>*Lepsza opieka psychiczna*</b> – rozwój pomocy psychologicznej i psychiatrycznej finansowanej przez państwo.<br>• <b>*Profilaktyka zdrowotna*</b> – większy nacisk na badania, które pozwalają wcześniej wykrywać choroby.<br>• <b>*Finansowanie in vitro*</b> – wsparcie par, które mają trudności z posiadaniem dzieci.</p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="logo.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide" id="7">
+<span class="num">08 / 06</span><div class="single-layout">
+<div class="reveal"><h2>Pomoc rodzinom, seniorom i młodym ludziom<br></h2><h1>Wsparcie rodzin<br></h1><p class="description3">• <b>Rozwój żłobków</b> – zwiększenie liczby miejsc dla małych dzieci, aby rodzice mogli łatwiej wrócić do pracy.<br>• <b>Łączenie pracy z wychowaniem dzieci</b> – ułatwianie rodzicom powrotu na rynek pracy po urlopie związanym z narodzinami dziecka.<br>• <b>Wsparcie osób z niepełnosprawnościami</b> – rozwijanie pomocy dla osób potrzebujących opieki oraz ich rodzin.<br></p><h1>Pomoc seniorom<br></h1><p class="description3">• <b>Godne życie na emeryturze</b> – działania mające poprawić bezpieczeństwo finansowe osób starszych.<br>• <b>Aktywność seniorów</b> – wspieranie uczestnictwa osób starszych w życiu społecznym.<br>• <b>Pomoc osobom niesamodzielnym</b>  – rozwijanie systemu opieki i wsparcia dla seniorów, którzy potrzebują pomocy w codziennym życiu.<br></p><h1>Mieszkania i młodzi ludzie<br></h1><p class = "description3">• <b>Większa dostępność mieszkań</b> – wspieranie budowy mieszkań na wynajem oraz mieszkań komunalnych i socjalnych.<br>• <b>Łatwiejszy start w dorosłość</b> – poprawa możliwości usamodzielnienia się młodych ludzi i znalezienia odpowiedniego mieszkania.<br>• <b>Wsparcie samorządów</b> – zachęcanie samorządów do zwiększania liczby dostępnych mieszkań na swoim terenie.</p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="senior.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide" id="8">
+<span class="num">09 / 06</span><div class="single-layout">
+<div class="reveal"><h2>Propozycje <em>Koalicji Obywatelskiej</em><br></h2><p class="description">• <b>Wyłączenie najcenniejszych przyrodniczo obszarów lasów z wycinki.</b><br>• <b>Objęcie rzek stałym monitoringiem czystości wody</b><br>• <b>Odtwarzanie torfowisk i mokradeł, które pomagają chronić przyrodę</b><br>• <b>Zakończenie nielegalnego importu śmieci do Polski</b><br>• <b>Ograniczenie wycinki drzew w miastach i zwiększenie liczby terenów zielonych</b><br>• <b>Rozwój energetyki wiatrowej na lądzie i energii słonecznej</b><br>• <b>Ułatwienie budowy elektrowni wiatrowych, między innymi przez propozycję zmniejszenia wymaganej odległości od zabudowań do 500 metrów</b><br>• <b>Umożliwienie tworzenia 700 lokalnych wspólnot energetycznych, które mogłyby produkować własny prąd</b><br>• <b>Rozwój odnawialnych źródeł energii oraz energetyki jądrowej</b><br>• <b>Zapowiedź ograniczenia emisji CO₂ w energetyce o 75% do 2030 roku.</b></p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="logo.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide" id="9">
+<span class="num">10 / 06</span><div class="single-layout">
+<div class="reveal"><h2>Najczęściej wskazywane problemy<br></h2><p class="description">• <b>Niezrealizowane obietnice: część zapowiedzi wyborczych dotyczących energetyki i ochrony przyrody nadal nie została w pełni zrealizowana</b><br>• <b>Wysokie koszty zmian: rozwój OZE, modernizacja sieci energetycznych i transformacja energetyczna wymagają dużych nakładów finansowych</b><br>• <b>Brak wystarczająco konkretnych planów: krytycy wskazują, że niektórym propozycjom brakuje szczegółowego harmonogramu realizacji</b><br>• <b>Spór o ochronę przyrody: pojawiają się zarzuty dotyczące zbyt wolnego wprowadzania zmian w ochronie lasów i rzek</b><br><br>W październiku 2025 roku Greenpeace krytykował rząd Donalda Tuska za niewystarczające postępy w realizacji części obietnic dotyczących energetyki i ochrony przyrody.</p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="logo.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide" id="10">
+<span class="num">11 / 06</span><div class="single-layout">
+<div class="reveal"><h2>Polityka zagraniczna<br></h2><br><p class="description2"><b>• Współpraca z <em style="color:#ffcc00;">Unią</em> <em style="color:#003399">Europejską</em></b> - wzmacnianie pozycji Polski w UE i korzystanie ze wspólnych inicjatyw.<br>Rząd poprawił dialog z instytucjami UE, Polska zaczęła otrzymywać środki z Krajowego Planu Odbudowy (KPO), po wcześniejszym sporze dotyczącym praworządności, w pierwszej połowie 2025 r. Polska sprawowała prezydencję w Radzie UE.<br><br><b>• Dobre relacje z sojusznikami</b> - rozwijanie współpracy z państwami europejskimi i Stanami Zjednoczonymi.<br>Rząd wznowił intensywniejszy dialog z Niemcami i Francją, wzmocniono współpracę w ramach Trójkąta Weimarskiego, czyli formatu Polska-Niemcy-Francja, Polska podkreśla znaczenie współpracy z Europą i USA jednocześnie.<br><br><b>• Wsparcie dla Ukrainy</b> - pomoc Ukrainie w związku z rosyjską agresją.<br>Polska kontynuuje pomoc Ukrainie zaatakowanej przez Rosję, wspiera działania dyplomatyczne na rzecz niepodległości i bezpieczeństwa Ukrainy, Polska pełni ważną rolę w organizowaniu pomocy wojskowej i humanitarnej.<br><br><b>• Aktywna dyplomacja</b> - dbanie o interesy Polski na arenie międzynarodowej.</p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="ue.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide" id="11">
+<span class="num">12 / 06</span><div class="single-layout">
+<div class="reveal"><h2>Bezpieczeństwo Polski<br></h2><br><p class="description1"><b>• Silna armia</b> - modernizacja wojska i zakup nowoczesnego sprzętu.<br>Rząd kontynuuje modernizację techniczną wojska i rozwój nowych jednostek.<br><br><b>• NATO</b> - wzmacnianie współpracy z sojusznikami w celu ochrony Polski.<br>Rząd rozwija współpracę wojskową z państwami europejskimi i USA.<br><br><b>• Ochrona granic</b> - zwiększanie bezpieczeństwa granic państwa.<br>W 2024 r. rozpoczęto program „Tarcza Wschód”, który ma wzmacniać wschodnią granicę Polski.<br><br><b>• Obrona cywilna</b> - przygotowanie służb i obywateli na sytuacje kryzysowe.<br>W grudniu 2024 r. uchwalono ustawę o ochronie ludności i obronie cywilnej, przewiduje ona m.in. rozwój systemu ostrzegania, przygotowanie do ewakuacji oraz lepszą ochronę ludności podczas kryzysów.<br><br><b>• Inwestycje w obronność</b> - rozwój polskiego przemysłu zbrojeniowego i infrastruktury obronnej.</p></div>
+<div class="photo-wrap reveal delay-1"><img loading="lazy" src="nato.png" alt="Obraz"></div>
+</div>
+</section>
+
+<section class="slide ending" id="13">
+<h2 class="reveal">DZIĘKUJEMY<span>.</span></h2><p class="end-caption reveal"></p>
+<div class="authors reveal"><div class="author"><strong>Dominik Kubiaczyk</strong></div><div class="author"><strong>Kamil Michalak</strong></div><div class="author"><strong>Wiktor Rogut</strong></div><div class="author"><strong>Eliza Wawrzyniak</strong></div><div class="author"><strong>Radosław Bladycz</strong></div></div>
+</section>
+</main>
+<script>
+const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+const sections=[...document.querySelectorAll('.slide')],dots=[...document.querySelectorAll('.nav-dots a')],progress=document.getElementById('progress');
+const sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const i=sections.indexOf(entry.target);dots.forEach((d,j)=>d.classList.toggle('active',i===j))}}),{threshold:.5});
+sections.forEach(s=>sectionObserver.observe(s));
+function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}window.addEventListener('scroll',updateProgress,{passive:true});updateProgress();
+document.addEventListener('keydown',e=>{if(['ArrowDown','PageDown','ArrowRight'].includes(e.key)){e.preventDefault();const i=sections.findIndex(s=>s.getBoundingClientRect().bottom>innerHeight*.35);sections[Math.min(i+1,sections.length-1)].scrollIntoView({behavior:'smooth'})}if(['ArrowUp','PageUp','ArrowLeft'].includes(e.key)){e.preventDefault();let i=sections.findIndex(s=>s.getBoundingClientRect().bottom>innerHeight*.35);sections[Math.max(0,i-1)].scrollIntoView({behavior:'smooth'})}});
+</script>
+</body>
+</html>
